@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sa mga Mata ng Bata | Angel Hildawa</title>
+  <meta name="description" content="Sa mga Mata ng Bata is an upper-year thesis short film. Associate Producer & Production Manager work by Angel Hildawa—an elementary student’s presentation about his father sparks an unexpected classroom outburst.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sa mga Mata ng Bata | Angel Hildawa">
+  <meta property="og:description" content="Thesis short film (Drama). Associate Producer & Production Manager: Angel Hildawa.">
+  <meta property="og:image" content="../assets/img/portfolio/mata/bts1.webp">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Page-specific styles (kept inline for this single page) -->
+  <style>
+.project-hero{
+  position: relative;
+  height: 85vh;
+  margin-top: 90px; /* fixed header offset */
+  overflow: hidden;
+}
+
+/* Background carousel at the bottom */
+.project-hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.project-hero-bg,
+.project-hero-bg .swiper-wrapper,
+.project-hero-bg .swiper-slide{
+  height: 100%;
+}
+
+.project-hero-bg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay above the background */
+.project-hero-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure overlay content sits above */
+.project-hero-overlay .container{
+  position: relative;
+  z-index: 3;
+}
+
+.hero-poster{
+  max-height: 65vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.project-type{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  font-size: 0.85rem;
+}
+
+.project-title{
+  font-size: 3rem;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.project-logline{
+  max-width: 720px;
+  margin: 0 0 16px;
+  opacity: 0.95;
+  line-height: 1.55;
+}
+
+.hero-meta{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.hero-meta li{
+  margin-bottom: 6px;
+}
+
+.hero-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+  .back-to-portfolio {
+    display: none;
+  }
+}
+
+
+ /* ✅ MOBILE: hero is only the carousel + overlay content (no poster inside) */
+    @media (max-width: 991px) {
+      .project-hero {
+        height: auto;      
+        min-height: 110vh;
+      }
+
+      .project-hero {
+      
+        padding-bottom: 32px;
+      }
+
+      .project-hero-overlay {
+        align-items: flex-start;
+        padding: 90px 0 24px; /* clears fixed header */
+      }
+
+      .project-title {
+        font-size: 2.2rem;
+      }
+      
+      
+@media (max-width: 991px) {
+  .d-lg-none.section .container {
+    padding-left: 16px;   /* horizontal spacing */
+    padding-right: 16px;
+    padding-top: 48px;
+  }
+
+  .d-lg-none.section img {
+    padding: 0;           /* image itself has NO padding */
+    margin-bottom: 16px;  /* spacing below poster */
+  }
+}
+
+/* Remove mobile gap between poster and next section */
+@media (max-width: 991px) {
+  .mobile-poster-section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #portfolio-details {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* If Key Highlights has margin-top */
+  .highlights-box {
+    margin-top: 0 !important;
+  }
+}
+
+
+
+
+
+    }
+  </style>
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="../index.html" class="logo d-flex align-items-center me-auto">
+        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html#hero">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#resume">Resume</a></li>
+          <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- HERO: Big BTS Carousel with translucent black overlay -->
+    <section id="project-hero" class="project-hero">
+
+      <!-- Background BTS Carousel -->
+      <div class="project-hero-bg swiper init-swiper">
+        <script type="application/json" class="swiper-config">
+          {
+            "loop": true,
+            "speed": 700,
+            "autoplay": { "delay": 3500 },
+            "effect": "fade"
+          }
+        </script>
+
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="../assets/img/portfolio/mata/still 1.webp" alt="Sa mga Mata ng Bata Still 1"></div>
+          <div class="swiper-slide"><img src="../assets/img/portfolio/mata/still 2.webp" alt="Sa mga Mata ng Bata Still 2"></div>
+          <div class="swiper-slide"><img src="../assets/img/portfolio/mata/still 3.webp" alt="Sa mga Mata ng Bata Still 3"></div>
+        </div>
+      </div>
+
+      <!-- Overlay content -->
+      <div class="project-hero-overlay">
+        <div class="container">
+          <div class="row align-items-center g-4">
+
+            <!-- Poster (desktop only) -->
+            <div class="col-lg-4 d-none d-lg-block" data-aos="fade-up">
+              <a href="../assets/img/portfolio/mata/poster.webp" class="glightbox">
+                <img src="../assets/img/portfolio/mata/poster.webp" class="hero-poster img-fluid" alt="Sa mga Mata ng Bata Film Poster">
+              </a>
+            </div>
+
+            <!-- Details -->
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+              <span class="project-type">Short Film</span>
+              <h1 class="project-title">Sa mga Mata ng Bata</h1>
+
+              <p class="project-logline">
+                Struggling with his class presentation about his father, an elementary student named Philip turns to his infamous politician father for help, leading to an unexpected outburst inside the classroom.
+              </p>
+
+              <ul class="hero-meta">
+                <li><strong>Project Type:</strong> Thesis Film (Upper Year)</li>
+                <li><strong>Prod:</strong> Anonymous Jeepney Productions</li>
+                <li><strong>Genre:</strong> Drama</li>
+                <li><strong>Date:</strong> 2022</li>
+                <li><strong>Duration:</strong> 3-day shoot (Out of Town)</li>
+                <li><strong>Role(s):</strong> Associate Producer, Production Manager</li>
+                <li><strong>Awards:</strong> Realiflm Adamson – Silver Award (2023); Gawad Alternatibo – 3rd Place Short Feature (2023); Official Selection – Diwa Filipino Film Showcase of Seattle (2023); Pelikultura (2023)</li>
+              </ul>
+
+              <div class="hero-actions">
+                <a href="https://cinemata.org/view?m=B4iuezACE&fbclid=PAZXh0bgNhZW0CMTEAAaYj31-VEDLIeq1xS6fidbD71AOs5RoFje6k9edPvht6-I8HEIF48EmITjo_aem__9SOIGPiqgKP-3Hvh1DWjw&mibextid=Zxz2cZ"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-primary">
+                  <i class="bi bi-play-circle"></i> Watch Film
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ✅ Mobile Poster Section (not inside the hero so it never gets cut) -->
+    <section class="d-lg-none section pt-0 pb-0 mobile-poster-section">
+
+      <div class="container">
+        <a href="../assets/img/portfolio/mata/poster.webp" class="glightbox">
+          <img src="../assets/img/portfolio/mata/poster.webp" alt="Sa mga Mata ng Bata Film Poster" class="img-fluid rounded w-100">
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section id="portfolio-details" class="portfolio-details section pt-0">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <!-- LEFT COLUMN: Overview + Highlights + Gallery -->
+          <div class="col-lg-8">
+
+            <div class="portfolio-content">
+              <h3>Project Overview</h3>
+              <p>
+                I joined this upper-year thesis film as a freshman intern, taking on major logistical roles for a small crew originally composed of eight members. Due to sudden illnesses within the team, we continued as a six-person crew, requiring me to juggle multiple responsibilities including logistics, scheduling, and crew coordination. The project involved working closely with a child actor and managing a full out-of-town production. The film later earned multiple recognitions in national and international festivals.
+              </p>
+              <div class="highlights-box">
+                <h4>Key Highlights</h4>
+                <ul>
+                  <li><i class="bi bi-check-circle"></i> Handled logistics for a small and shifting crew during an out-of-town production.</li>
+                  <li><i class="bi bi-check-circle"></i> Worked closely with a child actor and managed tight shoot schedules.</li>
+                  <li><i class="bi bi-check-circle"></i> Juggled multiple roles due to limited manpower.</li>
+                  <li><i class="bi bi-check-circle"></i> Part of an award-winning thesis film with notable festival recognitions.</li>
+                </ul>
+              </div>
+
+             <!-- Photo Gallery -->
+<div class="mt-4">
+  <h3>Photo Gallery</h3>
+
+  <div class="swiper photo-gallery-swiper init-swiper">
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <script type="application/json" class="swiper-config">
+      {
+  "slidesPerView": 1.1,
+  "spaceBetween": 12,
+  "loop": true,
+  "autoplay": {
+    "delay": 3000,
+    "disableOnInteraction": false
+  },
+  "pagination": {
+    "el": ".swiper-pagination",
+    "clickable": true
+  },
+  "breakpoints": {
+    "768": {
+      "slidesPerView": 3,
+      "spaceBetween": 16
+    }
+  }
+  
+}
+
+    </script>
+
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/mata/bts1.webp" class="glightbox" data-gallery="mata-stills">
+          <img src="../assets/img/portfolio/mata/bts1.webp" alt="Sa mga Mata ng Bata still 1" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/mata/bts2.webp" class="glightbox" data-gallery="mata-stills">
+          <img src="../assets/img/portfolio/mata/bts2.webp" alt="Sa mga Mata ng Bata still 2" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/mata/bts3.webp" class="glightbox" data-gallery="mata-stills">
+          <img src="../assets/img/portfolio/mata/bts3.webp" alt="Sa mga Mata ng Bata still 3" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/mata/bts4.webp" class="glightbox" data-gallery="mata-stills">
+          <img src="../assets/img/portfolio/mata/bts4.webp" alt="Sa mga Mata ng Bata still 4" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/mata/bts5.webp" class="glightbox" data-gallery="mata-stills">
+          <img src="../assets/img/portfolio/mata/bts5.webp" alt="Sa mga Mata ng Bata still 5" class="img-fluid rounded">
+        </a>
+      </div>
+
+     
+
+    </div>
+
+    <div class="swiper-pagination mt-3"></div>
+  </div>
+</div>
+
+
+              <div class="mt-4 back-to-portfolio">
+
+                <a href="../index.html#portfolio" class="btn btn-outline-secondary">
+                  <i class="bi bi-arrow-left"></i> Back to Portfolio
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Credits + Special Thanks (clickable IG usernames) -->
+          <div class="col-lg-4">
+            <div class="sidebar">
+
+              <div class="tags-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Credits</h3>
+                <hr>
+                  
+                <div class="credits-list">
+                  <p>
+                    <strong>Starring</strong><br>
+                    Kenshin Lagutan<br>
+                    Adrian Castañares Jr.
+                  </p>
+
+                  <p>
+                    <strong>Written, Directed, and Edited by</strong><br>
+                    Chauncy Cruz
+                  </p>
+
+                  <p>
+                    <strong>Executive Producer</strong><br>
+                    Jhoana Rabino<br>
+                    Chauncy Cruz
+                  </p>
+
+                  <p>
+                    <strong>Supervising Producer</strong><br>
+                    Jose Javier Reyes
+                  </p>
+
+                  <p>
+                    <strong>Creative Producer</strong><br>
+                    Seymour Sanchez
+                  </p>
+
+                  <p>
+                    <strong>Director of Photography and Colorist</strong><br>
+                    <a href="https://www.instagram.com/johnlexterrr" target="_blank" rel="noopener noreferrer">@johnlexterrr</a>
+                  </p>
+
+                  <p>
+                    <strong>Production Designer</strong><br>
+                    Alexa Abrianna Manalang
+                  </p>
+
+                  <p>
+                    <strong>Assistant Director</strong><br>
+                    Corlisse Nicolas
+                  </p>
+
+                  <p>
+                    <strong>Associate Producer / Production Manager</strong><br>
+                    <a href="https://www.instagram.com/angelhildawa" target="_blank" rel="noopener noreferrer">@angelhildawa</a>
+                  </p>
+
+                  <p>
+                    <strong>Camera Operator</strong><br>
+                    Gillian Navarro
+                  </p>
+
+                  <p>
+                    <strong>Sound</strong><br>
+                    Paul Van Guzman
+                  </p>
+
+                  <p>
+                    <strong>Music Scorer</strong><br>
+                    Gabriel Grindulo
+                  </p>
+
+                </div>
+
+             
+
+  
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <a href="https://www.facebook.com/aaangeeeellllll" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
+      </a>
+      <a href="https://www.instagram.com/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-linkedin" style="font-size: 1.5rem;"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Vendor JS -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
