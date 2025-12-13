@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Immutable | Angel Hildawa</title>
+  <meta name="description" content="Immutable is a Benilde capstone short film. Producer and Assistant Director work by Angel Hildawa—an action-drama about illegal boxing, freedom, and protecting family.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Immutable | Angel Hildawa">
+  <meta property="og:description" content="Benilde capstone short film (Drama/Action). Producer & Assistant Director: Angel Hildawa.">
+  <meta property="og:image" content="../assets/img/portfolio/immu/bts1.webp">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Page-specific styles (kept inline for this single page) -->
+  <style>
+.project-hero{
+  position: relative;
+  height: 85vh;
+  margin-top: 90px; /* fixed header offset */
+  overflow: hidden;
+}
+
+/* Background carousel at the bottom */
+.project-hero-bg{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.project-hero-bg,
+.project-hero-bg .swiper-wrapper,
+.project-hero-bg .swiper-slide{
+  height: 100%;
+}
+
+.project-hero-bg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay above the background */
+.project-hero-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure overlay content sits above */
+.project-hero-overlay .container{
+  position: relative;
+  z-index: 3;
+}
+
+.hero-poster{
+  max-height: 65vh;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.project-type{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  font-size: 0.85rem;
+}
+
+.project-title{
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.project-logline{
+  max-width: 720px;
+  margin: 0 0 16px;
+  opacity: 0.95;
+  line-height: 1.55;
+}
+
+.hero-meta{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.hero-meta li{
+  margin-bottom: 6px;
+}
+
+.hero-actions{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+  .back-to-portfolio {
+    display: none;
+  }
+}
+
+
+ /* ✅ MOBILE: hero is only the carousel + overlay content (no poster inside) */
+    @media (max-width: 991px) {
+      .project-hero {
+        height: 100vh;      /* hero is just the big carousel */
+        min-height: 420px;
+      }
+
+      .project-hero {
+      
+        padding-bottom: 16px;
+      }
+
+      .project-hero-overlay {
+        align-items: flex-start;
+        padding: 90px 0 24px; /* clears fixed header */
+      }
+
+      .project-title {
+        font-size: 2.2rem;
+      }
+      
+      
+@media (max-width: 991px) {
+  .d-lg-none.section .container {
+    padding-left: 16px;   /* horizontal spacing */
+    padding-right: 16px;
+    padding-top: 16px;
+  }
+
+  .d-lg-none.section img {
+    padding: 0;           /* image itself has NO padding */
+    margin-bottom: 16px;  /* spacing below poster */
+  }
+}
+
+/* Remove mobile gap between poster and next section */
+@media (max-width: 991px) {
+  .mobile-poster-section {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #portfolio-details {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* If Key Highlights has margin-top */
+  .highlights-box {
+    margin-top: 0 !important;
+  }
+}
+
+
+
+
+
+    }
+  </style>
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="../index.html" class="logo d-flex align-items-center me-auto">
+        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="../index.html#hero">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#resume">Resume</a></li>
+          <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- HERO: Big BTS Carousel with translucent black overlay -->
+    <section id="project-hero" class="project-hero">
+
+      <!-- Background BTS Carousel -->
+      <div class="project-hero-bg swiper init-swiper">
+        <script type="application/json" class="swiper-config">
+          {
+            "loop": true,
+            "speed": 700,
+            "autoplay": { "delay": 3500 },
+            "effect": "fade"
+          }
+        </script>
+
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="../assets/img/portfolio/immu/still 1.webp" alt="Immutable BTS 1"></div>
+          <div class="swiper-slide"><img src="../assets/img/portfolio/immu/still 2.webp" alt="Immutable BTS 2"></div>
+          <div class="swiper-slide"><img src="../assets/img/portfolio/immu/still 3.webp" alt="Immutable BTS 3"></div>
+        </div>
+      </div>
+
+      <!-- Overlay content -->
+      <div class="project-hero-overlay">
+        <div class="container">
+          <div class="row align-items-center g-4">
+
+            <!-- Poster (desktop only) -->
+            <div class="col-lg-4 d-none d-lg-block" data-aos="fade-up">
+              <a href="../assets/img/portfolio/immu/poster.webp" class="glightbox">
+                <img src="../assets/img/portfolio/immu/poster.webp" class="hero-poster img-fluid" alt="Immutable Film Poster">
+              </a>
+            </div>
+
+            <!-- Details -->
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+              <span class="project-type">Short Film</span>
+              <h1 class="project-title">Immutable</h1>
+
+              <p class="project-logline">
+                A young man enters the grim world of illegal boxing to protect his freedom and his sister’s safety.
+              </p>
+
+              <ul class="hero-meta">
+                <li><strong>Project Type / Course:</strong> Benilde Capstone Film</li>
+                <li><strong>Team / Group:</strong> Daro Films</li>
+                <li><strong>Category / Genre:</strong> Drama / Action</li>
+                <li><strong>Date:</strong> 2023</li>
+                <li><strong>Duration:</strong> Multiple-day location shoot</li>
+                <li><strong>Role(s):</strong> Producer, Assistant Director</li>
+                <li><strong>Awards:</strong> 2023 Benilde Capstone Film</li>
+              </ul>
+
+              <div class="hero-actions">
+                <a href="https://www.instagram.com/p/C0Bhq6YPGxV/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-primary">
+                  <i class="bi bi-play-circle"></i> View Reel
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ✅ Mobile Poster Section (not inside the hero so it never gets cut) -->
+    <section class="d-lg-none section pt-0 pb-0 mobile-poster-section">
+
+      <div class="container">
+        <a href="../assets/img/portfolio/immu/poster.webp" class="glightbox">
+          <img src="../assets/img/portfolio/immu/poster.webp" alt="Immutable Film Poster" class="img-fluid rounded w-100">
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section id="portfolio-details" class="portfolio-details section pt-0">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <!-- LEFT COLUMN: Overview + Highlights + Gallery -->
+          <div class="col-lg-8">
+
+            <div class="portfolio-content">
+
+              <div class="highlights-box">
+                <h4>Key Highlights</h4>
+                <ul>
+                  <li><i class="bi bi-check-circle"></i> Led logistics for a large-scale student production involving multiple high-complexity locations.</li>
+                  <li><i class="bi bi-check-circle"></i> Coordinated stunts and transformed a warehouse into an illegal boxing ring.</li>
+                  <li><i class="bi bi-check-circle"></i> Managed moving-bus sequences and outdoor logistics.</li>
+                  <li><i class="bi bi-check-circle"></i> Oversaw pre-production planning across all departments.</li>
+                </ul>
+              </div>
+
+             <!-- Photo Gallery -->
+<div class="mt-4">
+  <h3>Photo Gallery</h3>
+
+  <div class="swiper photo-gallery-swiper init-swiper">
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <script type="application/json" class="swiper-config">
+      {
+  "slidesPerView": 1.1,
+  "spaceBetween": 12,
+  "loop": true,
+  "autoplay": {
+    "delay": 3000,
+    "disableOnInteraction": false
+  },
+  "pagination": {
+    "el": ".swiper-pagination",
+    "clickable": true
+  },
+  "breakpoints": {
+    "768": {
+      "slidesPerView": 3,
+      "spaceBetween": 16
+    }
+  }
+  
+}
+
+    </script>
+
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts1.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts1.webp" alt="Immutable still 1" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts2.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts2.webp" alt="Immutable still 2" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts3.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts3.webp" alt="Immutable still 3" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts4.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts4.webp" alt="Immutable still 4" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts5.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts5.webp" alt="Immutable still 5" class="img-fluid rounded">
+        </a>
+      </div>
+
+      <div class="swiper-slide">
+        <a href="../assets/img/portfolio/immu/bts6.webp" class="glightbox" data-gallery="immu-stills">
+          <img src="../assets/img/portfolio/immu/bts6.webp" alt="Immutable still 6" class="img-fluid rounded">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="swiper-pagination mt-3"></div>
+  </div>
+</div>
+
+
+              <div class="mt-4 back-to-portfolio">
+
+                <a href="../index.html#portfolio" class="btn btn-outline-secondary">
+                  <i class="bi bi-arrow-left"></i> Back to Portfolio
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Credits + Special Thanks (clickable IG usernames) -->
+          <div class="col-lg-4">
+            <div class="sidebar">
+
+              <div class="tags-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Credits</h3>
+
+                <div class="credits-list">
+                  <p>
+                    <strong>Starring</strong><br>
+                    <a href="https://www.instagram.com/lau.apostol" target="_blank" rel="noopener noreferrer">@lau.apostol</a><br>
+                    <a href="https://www.instagram.com/mrsoleugenio" target="_blank" rel="noopener noreferrer">@mrsoleugenio</a>
+                  </p>
+
+                  <p>
+                    <strong>Director</strong><br>
+                    <a href="https://www.instagram.com/d.rxs" target="_blank" rel="noopener noreferrer">@d.rxs</a>
+                  </p>
+
+                  <p>
+                    <strong>Producer</strong><br>
+                    <a href="https://www.instagram.com/angelhildawa" target="_blank" rel="noopener noreferrer">@angelhildawa</a>
+                  </p>
+
+                  <p>
+                    <strong>Production Manager</strong><br>
+                    <a href="https://www.instagram.com/yoellualhati" target="_blank" rel="noopener noreferrer">@yoellualhati</a>
+                  </p>
+
+                  <p>
+                    <strong>Cinematographer</strong><br>
+                    <a href="https://www.instagram.com/johnlexterrr" target="_blank" rel="noopener noreferrer">@johnlexterrr</a>
+                  </p>
+
+              
+                </div>
+
+                <hr>
+
+                <h4 class="mt-3">Special Thanks</h4>
+                <ul class="list-unstyled mb-0">
+                  <li>Aputure Philippines <a href="https://www.instagram.com/aputurephilippines" target="_blank" rel="noopener noreferrer">@aputurephilippines</a></li>
+                  <li>Vibetribe PH <a href="https://www.instagram.com/vibetribeph" target="_blank" rel="noopener noreferrer">@vibetribeph</a></li>
+                  <li>DCAM Rental <a href="https://www.instagram.com/ajdespi" target="_blank" rel="noopener noreferrer">@ajdespi</a></li>
+                  <li>Equinox Manila <a href="https://www.instagram.com/equinoxmanila" target="_blank" rel="noopener noreferrer">@equinoxmanila</a></li>
+                  <li>CMB Film Services <a href="https://www.instagram.com/cmbfilms.ph" target="_blank" rel="noopener noreferrer">@cmbfilms.ph</a></li>
+                  <li>Adam Studio Works <a href="https://www.instagram.com/adam_studioworks" target="_blank" rel="noopener noreferrer">@adam_studioworks</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <a href="https://www.facebook.com/aaangeeeellllll" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
+      </a>
+      <a href="https://www.instagram.com/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
+        <i class="bi bi-linkedin" style="font-size: 1.5rem;"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Vendor JS -->
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>
