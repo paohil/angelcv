@@ -190,25 +190,39 @@
 <body class="portfolio-details-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="../index.html" class="logo d-flex align-items-center me-auto">
-        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
-      </a>
+    <!-- Logo -->
+    <a href="../index.html" class="logo d-flex align-items-center">
+      <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
+    </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../index.html#hero">Home</a></li>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#resume">Resume</a></li>
-          <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+    <!-- Breadcrumbs (project detail pages only) -->
+    <nav class="breadcrumbs ms-3 d-none d-lg-block" aria-label="Breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <a href="../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Guys! Action!
+        </li>
+      </ol>
+    </nav>
 
-    </div>
-  </header>
+    <!-- Main nav -->
+    <nav id="navmenu" class="navmenu ms-auto">
+      <ul>
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#resume">Resume</a></li>
+        <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+  </div>
+</header>
 
   <main class="main">
 
@@ -391,12 +405,6 @@
 </div>
 
 
-              <div class="mt-4 back-to-portfolio">
-
-                <a href="../index.html#portfolio" class="btn btn-outline-secondary">
-                  <i class="bi bi-arrow-left"></i> Back to Portfolio
-                </a>
-              </div>
 
             </div>
 
@@ -411,45 +419,58 @@
                 <hr>
                   
                 <div class="credits-list">
-                  <p>
-                    <strong>Starring</strong><br>
-                    André Miguel<br>
-                    Wayne San Juan<br>
-                    Amelia Salve
-                  </p>
+  <p>
+    <strong>Written and Directed by</strong><br>
+    Jem Catabijan
+  </p>
 
-                  <p>
-                    <strong>Supporting Cast</strong><br>
-                    Aristedes M Lamorena Jr.<br>
-                    Pia Ann Meily<br>
-                    Raphael Tapiador<br>
-                    Joshua Ann Nava<br>
-                    Rosemarie Faca Dioniso
-                  </p>
+  <p>
+    <strong>Assistant Director</strong><br>
+    Angel Hildawa
+  </p>
 
-                  <p>
-                    <strong>Written and Directed by</strong><br>
-                    Jem Catabijan
-                  </p>
+  <p>
+    <strong>Line Producer</strong><br>
+    Yuuka Tanaka
+  </p>
 
-                  <p>
-                    <strong>Assistant Director</strong><br>
-                    <a href="https://www.instagram.com/angelhildawa" target="_blank" rel="noopener noreferrer">@angelhildawa</a>
-                  </p>
+  <p>
+    <strong>Production Manager</strong><br>
+    Krissel Bernabe
+  </p>
 
-                  <p>
-                    <strong>Line Producer</strong><br>
-                    Yuuka Tanaka
-                  </p>
+  <p>
+    <strong>Director of Photography</strong><br>
+    John Lexter Laguinday
+  </p>
 
-                  <p>
-                    <strong>Production Manager</strong><br>
-                    Krissel Bernabe
-                  </p>
+  <p>
+    <strong>Art Director</strong><br>
+    Ivan Balmaceda
+  </p>
 
-                 
+  <p>
+    <strong>Production Assistant / BTS</strong><br>
+    Jheryle Lim
+  </p>
 
-                </div>
+  <p>
+    <strong>Sound Recordists</strong><br>
+    Allen Sandoval
+  </p>
+
+  <p>
+    <strong>Starring</strong><br>
+    André Miguel, Wayne San Juan, Amelia Salve
+  </p>
+
+  <p>
+    <strong>Supporting Cast</strong><br>
+    Aristedes M Lamorena Jr., Pia Ann Meily,<br>
+    Raphael Tapiador, Joshua Ann Nava, Rosemarie Faca Dioniso
+  </p>
+</div>
+
 
                
 
@@ -467,20 +488,85 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white py-4">
-    <div class="container text-center">
-      <a href="https://www.facebook.com/aaangeeeellllll" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
-      </a>
-      <a href="https://www.instagram.com/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-linkedin" style="font-size: 1.5rem;"></i>
-      </a>
+    <!-- Footer -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row gy-4 align-items-start">
+
+      <!-- Brand / Social -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo" style="max-width: 140px;" class="mb-3">
+        <p class="small opacity-75">
+          Producer • Project Manager • Production Manager<br>
+          Films, Advertising & Branded Content
+        </p>
+
+       <div class="mt-3">
+  <a href="https://www.facebook.com/aaangeeeellllll"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-facebook fs-5"></i>
+  </a>
+
+  <a href="https://www.instagram.com/angelhildawa"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-instagram fs-5"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/angelhildawa"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-linkedin fs-5"></i>
+  </a>
+
+  <!-- Behance -->
+  <a href="https://www.behance.net/angel_hildawa"
+     class="text-white"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-behance fs-5"></i>
+  </a>
+</div>
+
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-4 col-md-6">
+        <h6 class="text-uppercase mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="../index.html#hero" class="text-white text-decoration-none opacity-75">Home</a></li>
+          <li class="mb-2"><a href="../index.html#about" class="text-white text-decoration-none opacity-75">About</a></li>
+          <li class="mb-2"><a href="../index.html#resume" class="text-white text-decoration-none opacity-75">Resume</a></li>
+          <li class="mb-2"><a href="../index.html#portfolio" class="text-white text-decoration-none opacity-75">Featured Works</a></li>
+          <li><a href="../index.html#contact" class="text-white text-decoration-none opacity-75">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Featured Projects -->
+      <div class="col-lg-4 col-md-6">
+        <h6 class="text-uppercase mb-3">Related Projects</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="../projects/guys.html" class="active">Guys! Action!</a></li>
+          <li class="mb-2"><a href="../projects/tara.html" class="text-white text-decoration-none opacity-75">Tara? Takbo!</a></li>
+          <li class="mb-2"><a href="../projects/immu.html" class="text-white text-decoration-none opacity-75">Immutable</a></li>
+          <li class="mb-2"><a href="../projects/mata.html" class="text-white text-decoration-none opacity-75">Sa Mga Mata Ng Bata</a></li>
+          <li class="mb-2"><a href="../projects/tahanan.html" class="text-white text-decoration-none opacity-75">Tahanan</a></li>
+        </ul>
+      </div>
+
     </div>
-  </footer>
+
+    <hr class="my-4 opacity-25">
+
+    <div class="text-center small opacity-75">
+      © 2026 Angel Hildawa. All rights reserved.
+    </div>
+  </div>
+</footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">

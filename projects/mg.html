@@ -183,26 +183,40 @@
 
 <body class="portfolio-details-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+ <header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="../index.html" class="logo d-flex align-items-center me-auto">
-        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
-      </a>
+    <!-- Logo -->
+    <a href="../index.html" class="logo d-flex align-items-center">
+      <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo">
+    </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="../index.html#hero">Home</a></li>
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#resume">Resume</a></li>
-          <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+    <!-- Breadcrumbs (project detail pages only) -->
+    <nav class="breadcrumbs ms-3 d-none d-lg-block" aria-label="Breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <a href="../index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          MG Automotive Campaign
+        </li>
+      </ol>
+    </nav>
 
-    </div>
-  </header>
+    <!-- Main nav -->
+    <nav id="navmenu" class="navmenu ms-auto">
+      <ul>
+        <li><a href="../index.html#hero">Home</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#resume">Resume</a></li>
+        <li><a href="../index.html#portfolio" class="active">Portfolio</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+  </div>
+</header>
 
   <main class="main">
 
@@ -225,15 +239,26 @@
         </div>
       </div>
 
+     <!-- Overlay content -->
       <div class="project-hero-overlay">
         <div class="container">
           <div class="row align-items-center g-4">
 
-            <div class="col-lg-4 d-none d-lg-block" data-aos="fade-up">
-              <a href="../assets/img/portfolio/mg/poster.webp" class="glightbox">
-                <img src="../assets/img/portfolio/mg/poster.webp" class="hero-poster img-fluid" alt="MG Automotive Campaign Poster">
-              </a>
-            </div>
+      <div class="col-lg-4 d-none d-lg-block" data-aos="fade-up">
+
+  <video
+    class="hero-poster img-fluid"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="../assets/img/portfolio/mg/reel.webm" type="video/webm">
+    Your browser does not support the video tag.
+  </video>
+
+</div>
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
               <span class="project-type">Advertisement</span>
@@ -269,14 +294,22 @@
 
     </section>
 
-    <section class="d-lg-none section pt-0 pb-0 mobile-poster-section">
-
-      <div class="container">
-        <a href="../assets/img/portfolio/mg/poster.webp" class="glightbox">
-          <img src="../assets/img/portfolio/mg/poster.webp" alt="MG Automotive Campaign Poster" class="img-fluid rounded w-100">
-        </a>
-      </div>
-    </section>
+       <!-- ✅ Mobile Poster Section (not inside the hero so it never gets cut) -->
+  <section class="d-lg-none section pt-0 pb-0 mobile-poster-section">
+  <div data-aos="fade-up">
+    <video
+      class="hero-poster img-fluid"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="../assets/img/portfolio/cebpac/reel.webm" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
 
     <section id="portfolio-details" class="portfolio-details section pt-0">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -368,7 +401,7 @@
         </a>
       </div>
 
-        <div class="swiper-slide">
+      <div class="swiper-slide">
         <a href="../assets/img/portfolio/mg/bts7.webp" class="glightbox" data-gallery="mg-stills">
           <img src="../assets/img/portfolio/mg/bts7.webp" alt="MG still 7" class="img-fluid rounded">
         </a>
@@ -381,12 +414,7 @@
 </div>
 
 
-              <div class="mt-4 back-to-portfolio">
-
-                <a href="../index.html#portfolio" class="btn btn-outline-secondary">
-                  <i class="bi bi-arrow-left"></i> Back to Portfolio
-                </a>
-              </div>
+              
 
             </div>
 
@@ -399,79 +427,77 @@
                 <h3>Credits</h3>
 
                 <div class="credits-list">
-                  <p>
-                    <strong>Video Production</strong><br>
-                    <a href="https://www.instagram.com/vibetribeph" target="_blank" rel="noopener noreferrer">@vibetribeph</a>
-                  </p>
+  <p>
+    <strong>Video Production</strong><br>
+    Vibetribe PH
+  </p>
 
-                  <p>
-                    <strong>Agency</strong><br>
-                    <a href="https://www.instagram.com/sisiadvertising" target="_blank" rel="noopener noreferrer">@sisiadvertising</a>
-                  </p>
+  <p>
+    <strong>Agency</strong><br>
+    Sisi Advertising
+  </p>
 
-                  <p>
-                    <strong>Director, Editor, Colorist, VFX</strong><br>
-                    <a href="https://www.instagram.com/rayambler7" target="_blank" rel="noopener noreferrer">@rayambler7</a>
-                  </p>
+  <p>
+    <strong>Director, Editor, Colorist, VFX</strong><br>
+    Ray Ambler
+  </p>
 
-                  <p>
-                    <strong>AD</strong><br>
-                    <a href="https://www.instagram.com/nicholasbmiguel" target="_blank" rel="noopener noreferrer">@nicholasbmiguel</a>
-                  </p>
+  <p>
+    <strong>AD</strong><br>
+    Nicholas Miguel
+  </p>
 
-                  <p>
-                    <strong>DOP</strong><br>
-                    <a href="https://www.instagram.com/johnlexterrr" target="_blank" rel="noopener noreferrer">@johnlexterrr</a>
-                  </p>
+  <p>
+    <strong>DOP</strong><br>
+    John Lexter Laguinday
+  </p>
 
-                  <p>
-                    <strong>VT Producer</strong><br>
-                    <a href="https://www.instagram.com/angelhildawa" target="_blank" rel="noopener noreferrer">@angelhildawa</a>
-                  </p>
+  <p>
+    <strong>VT Producer</strong><br>
+    Angel Hildawa
+  </p>
 
-                  <p>
-                    <strong>VT Accounts</strong><br>
-                    <a href="https://www.instagram.com/vergelcayabyab" target="_blank" rel="noopener noreferrer">@vergelcayabyab</a>
-                  </p>
+  <p>
+    <strong>VT Accounts</strong><br>
+    Vergel Cayabyab
+  </p>
 
-                  <p>
-                    <strong>VT EPs</strong><br>
-                    <a href="https://www.instagram.com/kyrkejaleco" target="_blank" rel="noopener noreferrer">@kyrkejaleco</a><br>
-                    <a href="https://www.instagram.com/deejrobles" target="_blank" rel="noopener noreferrer">@deejrobles</a>
-                  </p>
+  <p>
+    <strong>VT EPs</strong><br>
+    Kyrke Jaleco<br>
+    David Robles
+  </p>
 
-                  <p>
-                    <strong>PM</strong><br>
-                    <a href="https://www.instagram.com/lprlbrcs" target="_blank" rel="noopener noreferrer">@lprlbrcs</a>
-                  </p>
+  <p>
+    <strong>PM</strong><br>
+    LPRLBRCS
+  </p>
 
-                
+  <p>
+    <strong>Sisi Creative Director</strong><br>
+    Potchie Lazaro
+  </p>
 
-                  <p>
-                    <strong>Sisi Creative Director</strong><br>
-                    <a href="https://www.instagram.com/potchielazaro" target="_blank" rel="noopener noreferrer">@potchielazaro</a>
-                  </p>
+  <p>
+    <strong>Sisi Producer</strong><br>
+    Emow Redge
+  </p>
 
-                  <p>
-                    <strong>Sisi Producer</strong><br>
-                    <a href="https://www.instagram.com/emowredge" target="_blank" rel="noopener noreferrer">@emowredge</a>
-                  </p>
+  <p>
+    <strong>Production Manager</strong><br>
+    Pamela Trevor Tanos
+  </p>
+</div>
 
-                  <p>
-                    <strong>Production Manager</strong><br>
-                    <a href="https://www.instagram.com/pamelatrevortanos" target="_blank" rel="noopener noreferrer">@pamelatrevortanos</a>
-                  </p>
+<hr>
 
-                </div>
-
-                <hr>
-
-                <h3 class="mt-3" style="font-weight: bold;">Special Thanks</h3>
-                <ul class="list-unstyled mb-0">
-  <li><a href="https://www.instagram.com/cmbfilms.ph" target="_blank" rel="noopener noreferrer" style="color: white;">@cmbfilms.ph</a></li>
-  <li><a href="https://www.instagram.com/arrowhead.rent" target="_blank" rel="noopener noreferrer" style="color: white;">@arrowhead.rent</a></li>
-  <li><a href="https://www.instagram.com/rsvpfilmstudios" target="_blank" rel="noopener noreferrer" style="color: white;">@rsvpfilmstudios</a></li>
+<h3 class="mt-3" style="font-weight: bold;">Special Thanks</h3>
+<ul class="list-unstyled mb-0">
+  <li>CMB Films PH</li>
+  <li>Arrowhead Rent</li>
+  <li>RSVP Film Studios</li>
 </ul>
+
 
               </div>
 
@@ -485,19 +511,84 @@
 
   </main>
 
-  <footer class="bg-dark text-white py-4">
-    <div class="container text-center">
-      <a href="https://www.facebook.com/aaangeeeellllll" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
-      </a>
-      <a href="https://www.instagram.com/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/angelhildawa" class="text-white mx-2" target="_blank" rel="noopener noreferrer">
-        <i class="bi bi-linkedin" style="font-size: 1.5rem;"></i>
-      </a>
+<!-- Footer -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row gy-4 align-items-start">
+
+      <!-- Brand / Social -->
+      <div class="col-lg-4 text-center text-lg-start">
+        <img src="../assets/img/logo.webp" alt="Angel Hildawa Logo" style="max-width: 140px;" class="mb-3">
+        <p class="small opacity-75">
+          Producer • Project Manager • Production Manager<br>
+          Films, Advertising & Branded Content
+        </p>
+
+       <div class="mt-3">
+  <a href="https://www.facebook.com/aaangeeeellllll"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-facebook fs-5"></i>
+  </a>
+
+  <a href="https://www.instagram.com/angelhildawa"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-instagram fs-5"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/angelhildawa"
+     class="text-white me-3"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-linkedin fs-5"></i>
+  </a>
+
+  <!-- Behance -->
+  <a href="https://www.behance.net/angel_hildawa"
+     class="text-white"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi bi-behance fs-5"></i>
+  </a>
+</div>
+
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-4 col-md-6">
+        <h6 class="text-uppercase mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="../index.html#hero" class="text-white text-decoration-none opacity-75">Home</a></li>
+          <li class="mb-2"><a href="../index.html#about" class="text-white text-decoration-none opacity-75">About</a></li>
+          <li class="mb-2"><a href="../index.html#resume" class="text-white text-decoration-none opacity-75">Resume</a></li>
+          <li class="mb-2"><a href="../index.html#portfolio" class="text-white text-decoration-none opacity-75">Featured Works</a></li>
+          <li><a href="../index.html#contact" class="text-white text-decoration-none opacity-75">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Featured Projects -->
+      <div class="col-lg-4 col-md-6">
+        <h6 class="text-uppercase mb-3">Related Projects</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="../projects/wbd.html" class="text-white text-decoration-none opacity-75">HBO Max Launch Event</a></li>
+          <li class="mb-2"><a href="../projects/cebpac.html" class="text-white text-decoration-none opacity-75">Cebu Pacific Campaign</a></li>
+          <li class="mb-2"><a href="../projects/mg.html" class="active">MG Automotive</a></li>
+          <li><a href="../projects/sm.html" class="text-white text-decoration-none opacity-75">SM Woman Campaign</a></li>
+        </ul>
+      </div>
+
     </div>
-  </footer>
+
+    <hr class="my-4 opacity-25">
+
+    <div class="text-center small opacity-75">
+      © 2026 Angel Hildawa. All rights reserved.
+    </div>
+  </div>
+</footer>
 
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>
