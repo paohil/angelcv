@@ -221,7 +221,7 @@
     </div>
 
     <div class="brands-marquee" aria-label="Brands">
-      <div class="brands-track" id="brandsTrack">
+      <div class="brands-track">
         <!-- Set 1 (loads normally) -->
         <img src="assets/img/brands/logo-1.webp" alt="Brand 1" width="160" height="60" decoding="async">
         <img src="assets/img/brands/logo-2.webp" alt="Brand 2" width="160" height="60" decoding="async">
@@ -232,12 +232,19 @@
         <img src="assets/img/brands/logo-7.webp" alt="Brand 7" width="160" height="60" decoding="async">
         <img src="assets/img/brands/logo-8.webp" alt="Brand 8" width="160" height="60" decoding="async" class="invert-logo">
         <img src="assets/img/brands/logo-9.webp" alt="Brand 9" width="160" height="60" decoding="async" class="invert-logo">
+
+        <!-- Set 2 (lazy-load duplicates) -->
+        <img src="assets/img/brands/logo-1.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-2.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-3.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-4.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-5.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-6.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-7.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true">
+        <img src="assets/img/brands/logo-8.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true" class="invert-logo">
+        <img src="assets/img/brands/logo-9.webp" alt="" width="160" height="60" decoding="async" loading="lazy" aria-hidden="true" class="invert-logo">
       </div>
     </div>
-    <script>
-  const track = document.getElementById('brandsTrack');
-  track.innerHTML += track.innerHTML; // duplicate once at runtime
-</script>
   </div>
 </section>
 
