@@ -4365,54 +4365,57 @@ section,
 }
 
 
-.brands-marquee {
+.brands {
+  padding: 80px 0;
+  background: #111;
   overflow: hidden;
+}
+
+.brands-marquee {
   position: relative;
+  overflow: hidden;
   width: 100%;
-  /* isolates layout/paint so the marquee doesn't force the whole page to repaint */
-  contain: layout paint;
 }
 
 .brands-track {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 60px;
   width: max-content;
-
-  /* GPU-friendly animation */
-  will-change: transform;
-  transform: translate3d(0,0,0);
-  animation: brands-scroll 24s linear infinite;
+  animation: scroll-brands 35s linear infinite;
 }
 
-/* Make each logo cheap to layout/paint and consistent */
-.brands-track img {
-  height: 48px;      /* choose 40–60px */
-  width: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* Apply invert only where you need it */
-.brands-track img.invert-logo {
+.invert-logo {
   filter: invert(1);
 }
 
-/* Seamless loop: because you duplicated the content */
-@keyframes brands-scroll {
-  from { transform: translate3d(0,0,0); }
-  to   { transform: translate3d(-50%,0,0); }
+.brands-track img {
+  max-height: 70px;
+  
+  opacity: 0.75;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .brands-track { animation: none; transform: none; }
+.brands-track img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  transform: scale(1.05);
 }
-
 
 /* Mobile */
 @media (max-width: 575px) {
   .brands-track img {
     max-height: 50px;
+  }
+}
+
+/* Keyframes */
+@keyframes scroll-brands {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
