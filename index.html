@@ -956,12 +956,8 @@
     }
 
     function scheduleResume() {
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        track.classList.remove('is-paused');
-      });
-    }
-
+  track.classList.remove('is-paused');
+}
     // Infinite manual scroll wrapper (uses your duplicated content)
     function wrapScroll() {
       if (!mq.matches) return;
