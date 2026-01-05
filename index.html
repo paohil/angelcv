@@ -759,12 +759,8 @@
           </div>
 
          <div class="col-lg-8">
-  <form
-    action="mailto:paolohildawa@gmail.com"
-    method="POST"
-    enctype="text/plain"
-    class="php-email-form"
-  >
+   <form class="php-email-form" id="contactMailtoForm">
+
     <div class="row gy-4">
 
       <div class="col-md-6">
@@ -813,6 +809,33 @@
 
     </div>
   </form>
+  <script>
+  (function () {
+    const form = document.getElementById('contactMailtoForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = form.querySelector('[name="Name"]')?.value.trim() || '';
+      const email = form.querySelector('[name="Email"]')?.value.trim() || '';
+      const subject = form.querySelector('[name="Subject"]')?.value.trim() || '';
+      const message = form.querySelector('[name="Message"]')?.value.trim() || '';
+
+      const body =
+  `Hi Angel,\n\n` +
+  `My name is ${name} and I’m reaching out through your portfolio website.\n\n` +
+  `${message}\n\n` +
+  `You can reach me back at ${email}.\n\n` +
+  `Best regards,\n` +
+  `${name}`;
+
+
+      const mailto = `mailto:hildawaangel@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  })();
+</script>
 </div>
 
 
