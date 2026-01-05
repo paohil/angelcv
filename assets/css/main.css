@@ -4425,25 +4425,21 @@ section,
     font-size: 2rem;
   }
 
-  /* Make the marquee swipeable */
-  .brands-marquee {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;          /* Firefox */
-    touch-action: pan-x;
+  /* JS will drive movement on mobile to prevent jumps */
+  .brands-track {
+    animation: none !important;
+    transform: translate3d(0,0,0);
+    will-change: transform;
   }
 
+  /* still allow swipe gestures */
+  .brands-marquee {
+    overflow: hidden;         /* keep it clean; JS handles drag */
+    touch-action: pan-x;
+  }
   .brands-marquee::-webkit-scrollbar {
     display: none;                  /* Chrome/Safari */
   }
-
-  /* Keep auto-scroll, but allow pausing with a class */
-  .brands-track {
-    animation-duration: 14s;        /* your faster phone speed */
-    animation-play-state: running;
-  }
-
   .brands-track.is-paused {
     animation-play-state: paused;
   }
