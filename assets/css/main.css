@@ -4422,7 +4422,11 @@ section,
   }
 
   .brands h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+  
+  .brands p {
+    font-size: 0.9rem;
   }
 
   /* JS will drive movement on mobile to prevent jumps */
