@@ -948,16 +948,27 @@
     if (!marquee || !track) return;
 
     let rafId = null;
-    let isDragging = false;
-    let lastX = 0;
 
-    // px per second (tune this; 80–140 feels good)
-    const SPEED = 110;
-
-    // Current translateX position
+    // Position (px)
     let x = 0;
 
-    // Cache loop width for accuracy (Set 2 start position)
+    // Auto-scroll base speed (px/sec). Tune this.
+    const AUTO_SPEED = 110;
+
+    // Momentum velocity (px/sec)
+    let v = 0;
+
+    // Friction: higher = stops faster (per second). Tune 6–12.
+    const FRICTION = 8;
+
+    // Clamp max swipe velocity (px/sec) to avoid insane fling
+    const MAX_V = 1800;
+
+    let isDragging = false;
+    let lastClientX = 0;
+    let lastMoveT = 0;
+
+    // Loop width (px) = exact start position of Set 2
     let loopW = 0;
 
     function updateLoopWidth() {
@@ -967,7 +978,6 @@
       const half = Math.floor(items.length / 2);
       if (!items[half]) { loopW = 0; return; }
 
-      // Exact distance from start of Set 1 to start of Set 2
       loopW = items[half].offsetLeft - items[0].offsetLeft;
     }
 
@@ -975,6 +985,10 @@
       if (!loopW) return;
       while (x <= -loopW) x += loopW;
       while (x > 0) x -= loopW;
+    }
+
+    function render() {
+      track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
     let lastTime = null;
@@ -985,10 +999,24 @@
       const dt = (t - lastTime) / 1000;
       lastTime = t;
 
+      // When not dragging: auto-scroll + momentum (inertia)
       if (!isDragging) {
-        x -= SPEED * dt;
+        // Auto-scroll baseline
+        x -= AUTO_SPEED * dt;
+
+        // Apply inertial velocity (v is px/sec)
+        if (Math.abs(v) > 0.5) {
+          x += v * dt;
+
+          // Exponential-ish decay for smooth friction
+          const decay = Math.exp(-FRICTION * dt);
+          v *= decay;
+        } else {
+          v = 0;
+        }
+
         wrapX();
-        track.style.transform = `translate3d(${x}px,0,0)`;
+        render();
       }
 
       rafId = requestAnimationFrame(tick);
@@ -996,35 +1024,51 @@
 
     function onDown(clientX) {
       isDragging = true;
-      lastX = clientX;
-      lastTime = null;
+      lastClientX = clientX;
+      lastMoveT = performance.now();
+      v = 0;               // reset momentum when user grabs
+      lastTime = null;      // avoid dt spike when resuming
     }
 
     function onMove(clientX) {
       if (!isDragging) return;
-      const dx = clientX - lastX;
-      lastX = clientX;
 
+      const now = performance.now();
+      const dx = clientX - lastClientX;
+      const dt = Math.max((now - lastMoveT) / 1000, 0.001);
+
+      lastClientX = clientX;
+      lastMoveT = now;
+
+      // Drag updates position directly
       x += dx;
       wrapX();
-      track.style.transform = `translate3d(${x}px,0,0)`;
+      render();
+
+      // Compute velocity from movement (px/sec)
+      // Smooth it a bit to avoid jitter (simple low-pass filter)
+      const instantV = dx / dt;
+      v = (0.75 * v) + (0.25 * instantV);
+
+      // Clamp velocity
+      if (v > MAX_V) v = MAX_V;
+      if (v < -MAX_V) v = -MAX_V;
     }
 
     function onUp() {
       isDragging = false;
-      lastTime = null;
+      lastTime = null; // avoid dt spike
+      // Keep v as-is to continue momentum
     }
 
     function enable() {
-      // Make sure loop width is correct AFTER images have layout
       updateLoopWidth();
-
       x = 0;
       wrapX();
-      track.style.transform = `translate3d(${x}px,0,0)`;
+      render();
 
-      lastTime = null;
       cancelAnimationFrame(rafId);
+      lastTime = null;
       rafId = requestAnimationFrame(tick);
 
       // Touch
@@ -1032,12 +1076,11 @@
       marquee.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
       marquee.addEventListener('touchend', onUp, { passive: true });
 
-      // Mouse (devtools / tablets)
+      // Mouse (devtools/tablets)
       marquee.addEventListener('mousedown', (e) => onDown(e.clientX));
       window.addEventListener('mousemove', (e) => onMove(e.clientX));
       window.addEventListener('mouseup', onUp);
 
-      // Keep loop width accurate if viewport changes
       window.addEventListener('resize', updateLoopWidth);
     }
 
@@ -1048,12 +1091,11 @@
       window.removeEventListener('resize', updateLoopWidth);
     }
 
-    // Ensure accurate offsets once images are loaded
     window.addEventListener('load', () => {
       updateLoopWidth();
       if (mq.matches) {
         wrapX();
-        track.style.transform = `translate3d(${x}px,0,0)`;
+        render();
       }
     });
 
@@ -1064,6 +1106,7 @@
     });
   })();
 </script>
+
 
 
 
