@@ -948,7 +948,7 @@
     if (!marquee || !track) return;
 
     let resumeTimer = null;
-    const RESUME_DELAY = 500;
+   
 
     function pause() {
       track.classList.add('is-paused');
@@ -959,7 +959,7 @@
       if (resumeTimer) clearTimeout(resumeTimer);
       resumeTimer = setTimeout(() => {
         track.classList.remove('is-paused');
-      }, RESUME_DELAY);
+      });
     }
 
     // Infinite manual scroll wrapper (uses your duplicated content)
