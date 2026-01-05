@@ -951,24 +951,28 @@
     let isDragging = false;
     let lastX = 0;
 
-    // px per second (tune this)
+    // px per second (tune this; 80–140 feels good)
     const SPEED = 110;
 
-    // translateX position in px
+    // Current translateX position
     let x = 0;
 
-    // Width of ONE set (because you duplicated logos)
+    // Cache loop width for accuracy (Set 2 start position)
     let loopW = 0;
 
     function updateLoopWidth() {
-      // track contains Set 1 + Set 2 -> one set is half of scrollWidth
-      const w = track.scrollWidth / 2;
-      loopW = Number.isFinite(w) ? w : 0;
+      const items = track.querySelectorAll('img');
+      if (!items.length) { loopW = 0; return; }
+
+      const half = Math.floor(items.length / 2);
+      if (!items[half]) { loopW = 0; return; }
+
+      // Exact distance from start of Set 1 to start of Set 2
+      loopW = items[half].offsetLeft - items[0].offsetLeft;
     }
 
     function wrapX() {
       if (!loopW) return;
-      // Keep x in (-loopW, 0] for seamless loop
       while (x <= -loopW) x += loopW;
       while (x > 0) x -= loopW;
     }
@@ -993,7 +997,7 @@
     function onDown(clientX) {
       isDragging = true;
       lastX = clientX;
-      lastTime = null; // prevents “jump” in velocity after drag
+      lastTime = null;
     }
 
     function onMove(clientX) {
@@ -1012,11 +1016,14 @@
     }
 
     function enable() {
+      // Make sure loop width is correct AFTER images have layout
       updateLoopWidth();
+
       x = 0;
       wrapX();
       track.style.transform = `translate3d(${x}px,0,0)`;
 
+      lastTime = null;
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
 
@@ -1025,34 +1032,30 @@
       marquee.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
       marquee.addEventListener('touchend', onUp, { passive: true });
 
-      // Mouse (optional)
+      // Mouse (devtools / tablets)
       marquee.addEventListener('mousedown', (e) => onDown(e.clientX));
       window.addEventListener('mousemove', (e) => onMove(e.clientX));
       window.addEventListener('mouseup', onUp);
 
-      // Keep loopW correct when images load / viewport changes
+      // Keep loop width accurate if viewport changes
       window.addEventListener('resize', updateLoopWidth);
-
-      // If available, track size changes (more reliable than resize alone)
-      if ('ResizeObserver' in window) {
-        const ro = new ResizeObserver(() => updateLoopWidth());
-        ro.observe(track);
-        marquee.__brandsRO = ro;
-      }
     }
 
     function disable() {
       cancelAnimationFrame(rafId);
       rafId = null;
       track.style.transform = '';
-
       window.removeEventListener('resize', updateLoopWidth);
-      marquee.__brandsRO?.disconnect();
-      marquee.__brandsRO = null;
     }
 
-    // Ensure widths are correct after images finish loading
-    window.addEventListener('load', updateLoopWidth);
+    // Ensure accurate offsets once images are loaded
+    window.addEventListener('load', () => {
+      updateLoopWidth();
+      if (mq.matches) {
+        wrapX();
+        track.style.transform = `translate3d(${x}px,0,0)`;
+      }
+    });
 
     if (mq.matches) enable();
     mq.addEventListener('change', (e) => {
@@ -1061,6 +1064,7 @@
     });
   })();
 </script>
+
 
 
 </body>
