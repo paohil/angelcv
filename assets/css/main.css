@@ -749,7 +749,7 @@ section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 40px 0;
   scroll-margin-top: 90px;
   overflow: clip;
 }
@@ -4317,7 +4317,7 @@ section,
   }
 
 }
-/* Portfolio role pills: keep on ONE line */
+
 .portfolio-meta .project-tags{
   display: flex;
   flex-wrap: wrap;
@@ -4335,11 +4335,16 @@ section,
 }
 
 /* Mobile: slightly smaller max width */
-@media (max-width: 576px){
-  .portfolio-meta .project-tags .tag{
-    max-width: 140px;
+@media (max-width: 576px) {
+  .portfolio-meta .project-tags .tag {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: 100%;
+    word-break: break-word;
   }
 }
+
 
 .breadcrumb {
   background: none;
@@ -4365,57 +4370,82 @@ section,
 }
 
 
-.brands {
-  padding: 80px 0;
-  background: #111;
+.brands-marquee {
   overflow: hidden;
+  position: relative;
+  width: 100%;
+  /* isolates layout/paint so the marquee doesn't force the whole page to repaint */
+  contain: layout paint;
 }
 
-.brands-marquee {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
+
 
 .brands-track {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 48px;
   width: max-content;
-  animation: scroll-brands 35s linear infinite;
+
+  /* GPU-friendly animation */
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  animation: brands-scroll 24s linear infinite;
 }
 
-.invert-logo {
+/* Make each logo cheap to layout/paint and consistent */
+.brands-track img {
+  height: 48px;      /* choose 40–60px */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Apply invert only where you need it */
+.brands-track img.invert-logo {
   filter: invert(1);
 }
 
-.brands-track img {
-  max-height: 70px;
-  
-  opacity: 0.75;
-  transition: all 0.3s ease;
+/* Seamless loop: because you duplicated the content */
+@keyframes brands-scroll {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); }
 }
 
-.brands-track img:hover {
-  transform: scale(1.05);
-  opacity: 1;
-  transform: scale(1.05);
+@media (prefers-reduced-motion: reduce) {
+  .brands-track { animation: none; transform: none; }
 }
 
-/* Mobile */
+
 @media (max-width: 575px) {
   .brands-track img {
     max-height: 50px;
   }
-}
 
-/* Keyframes */
-@keyframes scroll-brands {
-  from {
-    transform: translateX(0);
+  .brands h2 {
+    font-size: 2rem;
   }
-  to {
-    transform: translateX(-50%);
+
+  /* Make the marquee swipeable */
+  .brands-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    touch-action: pan-x;
+  }
+
+  .brands-marquee::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+  }
+
+  /* Keep auto-scroll, but allow pausing with a class */
+  .brands-track {
+    animation-duration: 14s;        /* your faster phone speed */
+    animation-play-state: running;
+  }
+
+  .brands-track.is-paused {
+    animation-play-state: paused;
   }
 }
 
@@ -4471,5 +4501,49 @@ section,
   body.navmenu-active .navmenu a {
     padding: 10px 12px;
     border-radius: 10px;
+  }
+}
+
+
+/* Contact form – design polish (drop-in overrides) */
+.contact .php-email-form {
+  border-radius: 14px;
+  padding: 44px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.contact .php-email-form .form-control {
+  border-radius: 10px;
+  padding: 14px 16px;
+  min-height: 48px;
+}
+
+.contact .php-email-form textarea.form-control {
+  min-height: 160px; /* more comfortable */
+  resize: vertical;
+}
+
+.contact .php-email-form button[type=submit] {
+  border-radius: 999px;           /* modern pill button */
+  padding: 12px 34px;
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+/* Make button feel nicer on click */
+.contact .php-email-form button[type=submit]:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-color), transparent 75%);
+}
+
+/* Phone-only layout improvement */
+@media (max-width: 575px) {
+  .contact .php-email-form {
+    padding: 26px 18px;
+    border-radius: 12px;
+  }
+
+  .contact .php-email-form button[type=submit] {
+    width: 100%;
+    justify-content: center;
   }
 }
