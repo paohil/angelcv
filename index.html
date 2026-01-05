@@ -951,25 +951,26 @@
     let isDragging = false;
     let lastX = 0;
 
-    // px per second (tune this; 80–140 feels good)
+    // px per second (tune this)
     const SPEED = 110;
 
-    // Current translateX position
+    // translateX position in px
     let x = 0;
 
-    // Width of ONE set (because you duplicated the logos)
-    function getLoopWidth() {
-      // track.scrollWidth is both sets; half is one set
-      return track.scrollWidth / 2;
+    // Width of ONE set (because you duplicated logos)
+    let loopW = 0;
+
+    function updateLoopWidth() {
+      // track contains Set 1 + Set 2 -> one set is half of scrollWidth
+      const w = track.scrollWidth / 2;
+      loopW = Number.isFinite(w) ? w : 0;
     }
 
-    function wrap() {
-      const loopW = getLoopWidth();
+    function wrapX() {
       if (!loopW) return;
-
-      // Keep x in [-loopW, 0) range to create seamless loop
-      x = ((x % loopW) + loopW) % loopW;
-      x = -x;
+      // Keep x in (-loopW, 0] for seamless loop
+      while (x <= -loopW) x += loopW;
+      while (x > 0) x -= loopW;
     }
 
     let lastTime = null;
@@ -982,46 +983,40 @@
 
       if (!isDragging) {
         x -= SPEED * dt;
+        wrapX();
+        track.style.transform = `translate3d(${x}px,0,0)`;
       }
 
-      const loopW = getLoopWidth();
-      if (loopW) {
-        // Wrap seamlessly
-        if (x <= -loopW) x += loopW;
-        if (x > 0) x -= loopW;
-      }
-
-      track.style.transform = `translate3d(${x}px,0,0)`;
       rafId = requestAnimationFrame(tick);
     }
 
     function onDown(clientX) {
       isDragging = true;
       lastX = clientX;
+      lastTime = null; // prevents “jump” in velocity after drag
     }
 
     function onMove(clientX) {
       if (!isDragging) return;
       const dx = clientX - lastX;
       lastX = clientX;
-      x += dx; // drag moves the strip
-      const loopW = getLoopWidth();
-      if (loopW) {
-        if (x <= -loopW) x += loopW;
-        if (x > 0) x -= loopW;
-      }
+
+      x += dx;
+      wrapX();
       track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
     function onUp() {
       isDragging = false;
-      lastTime = null; // prevents “speed spike” after drag
+      lastTime = null;
     }
 
     function enable() {
-      // Start in a stable position
+      updateLoopWidth();
       x = 0;
-      lastTime = null;
+      wrapX();
+      track.style.transform = `translate3d(${x}px,0,0)`;
+
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
 
@@ -1030,17 +1025,34 @@
       marquee.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
       marquee.addEventListener('touchend', onUp, { passive: true });
 
-      // Mouse (devtools / tablets)
+      // Mouse (optional)
       marquee.addEventListener('mousedown', (e) => onDown(e.clientX));
       window.addEventListener('mousemove', (e) => onMove(e.clientX));
       window.addEventListener('mouseup', onUp);
+
+      // Keep loopW correct when images load / viewport changes
+      window.addEventListener('resize', updateLoopWidth);
+
+      // If available, track size changes (more reliable than resize alone)
+      if ('ResizeObserver' in window) {
+        const ro = new ResizeObserver(() => updateLoopWidth());
+        ro.observe(track);
+        marquee.__brandsRO = ro;
+      }
     }
 
     function disable() {
       cancelAnimationFrame(rafId);
       rafId = null;
       track.style.transform = '';
+
+      window.removeEventListener('resize', updateLoopWidth);
+      marquee.__brandsRO?.disconnect();
+      marquee.__brandsRO = null;
     }
+
+    // Ensure widths are correct after images finish loading
+    window.addEventListener('load', updateLoopWidth);
 
     if (mq.matches) enable();
     mq.addEventListener('change', (e) => {
