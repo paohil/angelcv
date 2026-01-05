@@ -940,93 +940,112 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
- <script>
+<script>
   (function () {
     const mq = window.matchMedia('(max-width: 575px)');
     const marquee = document.querySelector('.brands-marquee');
     const track = document.querySelector('.brands-track');
     if (!marquee || !track) return;
 
-    let resumeTimer = null;
-   
+    let rafId = null;
+    let isDragging = false;
+    let lastX = 0;
 
-    function pause() {
-      track.classList.add('is-paused');
-      if (resumeTimer) clearTimeout(resumeTimer);
+    // px per second (tune this; 80–140 feels good)
+    const SPEED = 110;
+
+    // Current translateX position
+    let x = 0;
+
+    // Width of ONE set (because you duplicated the logos)
+    function getLoopWidth() {
+      // track.scrollWidth is both sets; half is one set
+      return track.scrollWidth / 2;
     }
 
-    function scheduleResume() {
-  track.classList.remove('is-paused');
-}
-    // Infinite manual scroll wrapper (uses your duplicated content)
-    function wrapScroll() {
+    function wrap() {
+      const loopW = getLoopWidth();
+      if (!loopW) return;
+
+      // Keep x in [-loopW, 0) range to create seamless loop
+      x = ((x % loopW) + loopW) % loopW;
+      x = -x;
+    }
+
+    let lastTime = null;
+    function tick(t) {
       if (!mq.matches) return;
 
-      const max = marquee.scrollWidth - marquee.clientWidth;
-      if (max <= 0) return;
+      if (lastTime == null) lastTime = t;
+      const dt = (t - lastTime) / 1000;
+      lastTime = t;
 
-      // Halfway point because you duplicated the set
-      const half = marquee.scrollWidth / 2;
-
-      // If user scrolls too far right, wrap back by half
-      if (marquee.scrollLeft >= half) {
-        marquee.scrollLeft -= half;
+      if (!isDragging) {
+        x -= SPEED * dt;
       }
-      // If user scrolls too far left (rare), wrap forward by half
-      else if (marquee.scrollLeft <= 0) {
-        marquee.scrollLeft += half;
+
+      const loopW = getLoopWidth();
+      if (loopW) {
+        // Wrap seamlessly
+        if (x <= -loopW) x += loopW;
+        if (x > 0) x -= loopW;
       }
+
+      track.style.transform = `translate3d(${x}px,0,0)`;
+      rafId = requestAnimationFrame(tick);
     }
 
-    function onStart() { if (mq.matches) pause(); }
-    function onMove()  { if (mq.matches) pause(); }
-    function onEnd()   { if (mq.matches) scheduleResume(); }
-
-    function enableMobileBehavior() {
-      // Make it easy to swipe by enabling horizontal scroll on phones
-      marquee.style.overflowX = 'auto';
-      marquee.style.overflowY = 'hidden';
-      marquee.style.webkitOverflowScrolling = 'touch';
-
-      // Start the user in the middle so they can swipe both directions “infinitely”
-      // (next tick so layout is ready)
-      requestAnimationFrame(() => {
-        marquee.scrollLeft = marquee.scrollWidth / 4;
-      });
-
-      marquee.addEventListener('scroll', wrapScroll, { passive: true });
-
-      marquee.addEventListener('touchstart', onStart, { passive: true });
-      marquee.addEventListener('touchmove', onMove, { passive: true });
-      marquee.addEventListener('touchend', onEnd, { passive: true });
-
-      marquee.addEventListener('mousedown', onStart);
-      marquee.addEventListener('mousemove', onMove);
-      marquee.addEventListener('mouseup', onEnd);
-      marquee.addEventListener('mouseleave', onEnd);
+    function onDown(clientX) {
+      isDragging = true;
+      lastX = clientX;
     }
 
-    function disableMobileBehavior() {
-      marquee.removeEventListener('scroll', wrapScroll);
-
-      marquee.removeEventListener('touchstart', onStart);
-      marquee.removeEventListener('touchmove', onMove);
-      marquee.removeEventListener('touchend', onEnd);
-
-      marquee.removeEventListener('mousedown', onStart);
-      marquee.removeEventListener('mousemove', onMove);
-      marquee.removeEventListener('mouseup', onEnd);
-      marquee.removeEventListener('mouseleave', onEnd);
-
-      track.classList.remove('is-paused');
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = null;
+    function onMove(clientX) {
+      if (!isDragging) return;
+      const dx = clientX - lastX;
+      lastX = clientX;
+      x += dx; // drag moves the strip
+      const loopW = getLoopWidth();
+      if (loopW) {
+        if (x <= -loopW) x += loopW;
+        if (x > 0) x -= loopW;
+      }
+      track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
-    if (mq.matches) enableMobileBehavior();
+    function onUp() {
+      isDragging = false;
+      lastTime = null; // prevents “speed spike” after drag
+    }
+
+    function enable() {
+      // Start in a stable position
+      x = 0;
+      lastTime = null;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+
+      // Touch
+      marquee.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), { passive: true });
+      marquee.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
+      marquee.addEventListener('touchend', onUp, { passive: true });
+
+      // Mouse (devtools / tablets)
+      marquee.addEventListener('mousedown', (e) => onDown(e.clientX));
+      window.addEventListener('mousemove', (e) => onMove(e.clientX));
+      window.addEventListener('mouseup', onUp);
+    }
+
+    function disable() {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      track.style.transform = '';
+    }
+
+    if (mq.matches) enable();
     mq.addEventListener('change', (e) => {
-      if (e.matches) enableMobileBehavior();
-      else disableMobileBehavior();
+      if (e.matches) enable();
+      else disable();
     });
   })();
 </script>
