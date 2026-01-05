@@ -940,7 +940,7 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
+ <script>
   (function () {
     const mq = window.matchMedia('(max-width: 575px)');
     const marquee = document.querySelector('.brands-marquee');
@@ -948,7 +948,7 @@
     if (!marquee || !track) return;
 
     let resumeTimer = null;
-    const RESUME_DELAY = 500; // ms (adjust: 2000–4000 feels good)
+    const RESUME_DELAY = 2500;
 
     function pause() {
       track.classList.add('is-paused');
@@ -962,13 +962,48 @@
       }, RESUME_DELAY);
     }
 
+    // Infinite manual scroll wrapper (uses your duplicated content)
+    function wrapScroll() {
+      if (!mq.matches) return;
+
+      const max = marquee.scrollWidth - marquee.clientWidth;
+      if (max <= 0) return;
+
+      // Halfway point because you duplicated the set
+      const half = marquee.scrollWidth / 2;
+
+      // If user scrolls too far right, wrap back by half
+      if (marquee.scrollLeft >= half) {
+        marquee.scrollLeft -= half;
+      }
+      // If user scrolls too far left (rare), wrap forward by half
+      else if (marquee.scrollLeft <= 0) {
+        marquee.scrollLeft += half;
+      }
+    }
+
+    function onStart() { if (mq.matches) pause(); }
+    function onMove()  { if (mq.matches) pause(); }
+    function onEnd()   { if (mq.matches) scheduleResume(); }
+
     function enableMobileBehavior() {
-      // Pause as soon as user starts interacting
+      // Make it easy to swipe by enabling horizontal scroll on phones
+      marquee.style.overflowX = 'auto';
+      marquee.style.overflowY = 'hidden';
+      marquee.style.webkitOverflowScrolling = 'touch';
+
+      // Start the user in the middle so they can swipe both directions “infinitely”
+      // (next tick so layout is ready)
+      requestAnimationFrame(() => {
+        marquee.scrollLeft = marquee.scrollWidth / 4;
+      });
+
+      marquee.addEventListener('scroll', wrapScroll, { passive: true });
+
       marquee.addEventListener('touchstart', onStart, { passive: true });
       marquee.addEventListener('touchmove', onMove, { passive: true });
       marquee.addEventListener('touchend', onEnd, { passive: true });
 
-      // Also support mouse on small screens (some devices / devtools)
       marquee.addEventListener('mousedown', onStart);
       marquee.addEventListener('mousemove', onMove);
       marquee.addEventListener('mouseup', onEnd);
@@ -976,6 +1011,8 @@
     }
 
     function disableMobileBehavior() {
+      marquee.removeEventListener('scroll', wrapScroll);
+
       marquee.removeEventListener('touchstart', onStart);
       marquee.removeEventListener('touchmove', onMove);
       marquee.removeEventListener('touchend', onEnd);
@@ -990,11 +1027,6 @@
       resumeTimer = null;
     }
 
-    function onStart() { if (mq.matches) pause(); }
-    function onMove()  { if (mq.matches) pause(); }
-    function onEnd()   { if (mq.matches) scheduleResume(); }
-
-    // Init + respond to breakpoint changes
     if (mq.matches) enableMobileBehavior();
     mq.addEventListener('change', (e) => {
       if (e.matches) enableMobileBehavior();
