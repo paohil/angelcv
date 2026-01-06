@@ -4547,3 +4547,56 @@ section,
     justify-content: center;
   }
 }
+
+/* Details grid layout */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Make certifications span full row */
+.details-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+/* Certifications block styling */
+.detail-item.certifications {
+  padding: 28px 32px;
+}
+
+.detail-item.certifications .cert-logos {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.detail-item.certifications .cert-logos img {
+  height: 60px;
+  width: auto;
+  opacity: 0.9;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.detail-item.certifications .cert-logos img:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Mobile: stack everything cleanly */
+@media (max-width: 575px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-item.certifications {
+    padding: 24px;
+  }
+
+  .detail-item.certifications .cert-logos img {
+    height: 48px;
+  }
+}
+
