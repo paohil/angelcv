@@ -4574,15 +4574,13 @@ section,
 }
 
 .detail-item.certifications .cert-logos img {
-  height: 60px;
+  height: 80px;
   width: auto;
-  opacity: 0.9;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .detail-item.certifications .cert-logos img:hover {
-  transform: translateY(-2px);
-  opacity: 1;
+  transform: scale(1.20);
 }
 
 /* Mobile: stack everything cleanly */
@@ -4592,11 +4590,12 @@ section,
   }
 
   .detail-item.certifications {
-    padding: 24px;
+    padding: 12px;
   }
 
   .detail-item.certifications .cert-logos img {
-    height: 48px;
+    height: 70px;
   }
 }
+
 
