@@ -45,6 +45,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#resume">Resume</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#demo-tools">Systems</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -168,7 +169,7 @@
                 
               </div>
 
-               <div class="details-grid">
+              <div class="details-grid">
                 <div class="detail-item" data-aos="fade-up" data-aos-delay="300">
                   <i class="bi bi-mortarboard"></i>
                   <div class="detail-content">
@@ -190,9 +191,9 @@
 
     <div class="cert-logos">
       <img src="assets/img/certs/1.webp" alt="Certification 1">
-      <img src="assets/img/certs/4.webp" alt="Certification 2">
-      <img src="assets/img/certs/2.webp" alt="Certification 3">
-      <img src="assets/img/certs/3.webp" alt="Certification 4">
+      <img src="assets/img/certs/2.webp" alt="Certification 2">
+      <img src="assets/img/certs/3.webp" alt="Certification 3">
+      <img src="assets/img/certs/4.webp" alt="Certification 4">
     </div>
   </div>
 </div>
@@ -726,6 +727,104 @@
 
     </section><!-- /Portfolio Section -->
 
+    <!-- Demo Section -->
+<section id="demo-tools" class="demo-tools section">
+
+  <div class="container section-title" data-aos="fade-up">
+    <span class="subtitle">Production Systems</span>
+    <h2>Tools Behind the Shoot</h2>
+    <p>I’ve always loved building production sheets. Across every shoot, one thing stays constant: last-minute changes. Call times shift, frames get revised, and plans evolve—so I created systems to keep everything aligned and easier to manage.</p>
+  </div>
+
+  <div class="container">
+    <div class="demo-tool-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="demo-media-frame">
+            <img src="assets/vid/demo1.gif" alt="Dynamic Callsheet demo | Angel Hildawa" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="demo-copy">
+            <span class="demo-label">Workflow Demo</span>
+            <h3>DYNAMIC CALLSHEET</h3>
+            <p class="demo-subtitle">An Automated Callsheet linked to a Master Shotlist</p>
+
+            <p>
+              Start with a masterlist: all shots, notes, and details in one place.
+              The masterlist feeds the callsheet, where shots are grouped by shoot flow.
+            </p>
+
+            <p class="demo-highlight">
+              Less manual work. Fewer errors. Faster adjustments.
+            </p>
+
+            <p class="demo-note">
+              Left column shows durations and timings. Changing call times or durations means end times update automatically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-tool-card" data-aos="fade-up" data-aos-delay="150">
+      <div class="row align-items-center g-5 flex-lg-row-reverse">
+        <div class="col-lg-7">
+          <div class="demo-media-frame">
+            <img src="assets/vid/demo2.gif" alt="Automated Transpo Plan demo | Angel Hildawa" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="demo-copy">
+            <span class="demo-label">Workflow Demo</span>
+            <h3>REAL-TIME SHEET FLOW</h3>
+            <p class="demo-subtitle">Updates in one place reflect across the workflow.</p>
+
+            <p>
+             These tools are built to reduce repetitive manual updating and keep production details aligned across planning documents.
+            </p>
+
+            <p class="demo-highlight">
+              Faster coordination. Cleaner handoffs. Better visibility for the whole team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-tool-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="demo-media-frame">
+            <img src="assets/vid/demo3.gif" alt="Production workflow demo | Angel Hildawa" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="demo-copy">
+            <span class="demo-label">Workflow Demo</span>
+            <h3>AUTOMATED TRANSPO PLAN</h3>
+            <p class="demo-subtitle">This one solves a very specific headache: pickup times.</p>
+
+            <p>
+              Change the shoot call time, and everyone’s pickup schedule updates automatically.
+            </p>
+
+            <p class="demo-highlight">
+             No delays. No mental math. Everything realigns instantly. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- /Demo Section -->
+
+
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
@@ -764,7 +863,7 @@
           </div>
 
          <div class="col-lg-8">
-   <form class="php-email-form" id="contactMailtoForm">
+  <form class="php-email-form" id="contactMailtoForm">
 
     <div class="row gy-4">
 
@@ -841,6 +940,7 @@
     });
   })();
 </script>
+
 </div>
 
 
@@ -953,47 +1053,28 @@
     if (!marquee || !track) return;
 
     let rafId = null;
+    let isDragging = false;
+    let lastX = 0;
 
-    // Position (px)
+    // px per second (tune this; 80–140 feels good)
+    const SPEED = 110;
+
+    // Current translateX position
     let x = 0;
 
-    // Auto-scroll base speed (px/sec). Tune this.
-    const AUTO_SPEED = 110;
-
-    // Momentum velocity (px/sec)
-    let v = 0;
-
-    // Friction: higher = stops faster (per second). Tune 6–12.
-    const FRICTION = 8;
-
-    // Clamp max swipe velocity (px/sec) to avoid insane fling
-    const MAX_V = 1800;
-
-    let isDragging = false;
-    let lastClientX = 0;
-    let lastMoveT = 0;
-
-    // Loop width (px) = exact start position of Set 2
-    let loopW = 0;
-
-    function updateLoopWidth() {
-      const items = track.querySelectorAll('img');
-      if (!items.length) { loopW = 0; return; }
-
-      const half = Math.floor(items.length / 2);
-      if (!items[half]) { loopW = 0; return; }
-
-      loopW = items[half].offsetLeft - items[0].offsetLeft;
+    // Width of ONE set (because you duplicated the logos)
+    function getLoopWidth() {
+      // track.scrollWidth is both sets; half is one set
+      return track.scrollWidth / 2;
     }
 
-    function wrapX() {
+    function wrap() {
+      const loopW = getLoopWidth();
       if (!loopW) return;
-      while (x <= -loopW) x += loopW;
-      while (x > 0) x -= loopW;
-    }
 
-    function render() {
-      track.style.transform = `translate3d(${x}px,0,0)`;
+      // Keep x in [-loopW, 0) range to create seamless loop
+      x = ((x % loopW) + loopW) % loopW;
+      x = -x;
     }
 
     let lastTime = null;
@@ -1004,76 +1085,49 @@
       const dt = (t - lastTime) / 1000;
       lastTime = t;
 
-      // When not dragging: auto-scroll + momentum (inertia)
       if (!isDragging) {
-        // Auto-scroll baseline
-        x -= AUTO_SPEED * dt;
-
-        // Apply inertial velocity (v is px/sec)
-        if (Math.abs(v) > 0.5) {
-          x += v * dt;
-
-          // Exponential-ish decay for smooth friction
-          const decay = Math.exp(-FRICTION * dt);
-          v *= decay;
-        } else {
-          v = 0;
-        }
-
-        wrapX();
-        render();
+        x -= SPEED * dt;
       }
 
+      const loopW = getLoopWidth();
+      if (loopW) {
+        // Wrap seamlessly
+        if (x <= -loopW) x += loopW;
+        if (x > 0) x -= loopW;
+      }
+
+      track.style.transform = `translate3d(${x}px,0,0)`;
       rafId = requestAnimationFrame(tick);
     }
 
     function onDown(clientX) {
       isDragging = true;
-      lastClientX = clientX;
-      lastMoveT = performance.now();
-      v = 0;               // reset momentum when user grabs
-      lastTime = null;      // avoid dt spike when resuming
+      lastX = clientX;
     }
 
     function onMove(clientX) {
       if (!isDragging) return;
-
-      const now = performance.now();
-      const dx = clientX - lastClientX;
-      const dt = Math.max((now - lastMoveT) / 1000, 0.001);
-
-      lastClientX = clientX;
-      lastMoveT = now;
-
-      // Drag updates position directly
-      x += dx;
-      wrapX();
-      render();
-
-      // Compute velocity from movement (px/sec)
-      // Smooth it a bit to avoid jitter (simple low-pass filter)
-      const instantV = dx / dt;
-      v = (0.75 * v) + (0.25 * instantV);
-
-      // Clamp velocity
-      if (v > MAX_V) v = MAX_V;
-      if (v < -MAX_V) v = -MAX_V;
+      const dx = clientX - lastX;
+      lastX = clientX;
+      x += dx; // drag moves the strip
+      const loopW = getLoopWidth();
+      if (loopW) {
+        if (x <= -loopW) x += loopW;
+        if (x > 0) x -= loopW;
+      }
+      track.style.transform = `translate3d(${x}px,0,0)`;
     }
 
     function onUp() {
       isDragging = false;
-      lastTime = null; // avoid dt spike
-      // Keep v as-is to continue momentum
+      lastTime = null; // prevents “speed spike” after drag
     }
 
     function enable() {
-      updateLoopWidth();
+      // Start in a stable position
       x = 0;
-      wrapX();
-      render();
-
-      cancelAnimationFrame(rafId);
       lastTime = null;
+      cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(tick);
 
       // Touch
@@ -1081,28 +1135,17 @@
       marquee.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
       marquee.addEventListener('touchend', onUp, { passive: true });
 
-      // Mouse (devtools/tablets)
+      // Mouse (devtools / tablets)
       marquee.addEventListener('mousedown', (e) => onDown(e.clientX));
       window.addEventListener('mousemove', (e) => onMove(e.clientX));
       window.addEventListener('mouseup', onUp);
-
-      window.addEventListener('resize', updateLoopWidth);
     }
 
     function disable() {
       cancelAnimationFrame(rafId);
       rafId = null;
       track.style.transform = '';
-      window.removeEventListener('resize', updateLoopWidth);
     }
-
-    window.addEventListener('load', () => {
-      updateLoopWidth();
-      if (mq.matches) {
-        wrapX();
-        render();
-      }
-    });
 
     if (mq.matches) enable();
     mq.addEventListener('change', (e) => {
